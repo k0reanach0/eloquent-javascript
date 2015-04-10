@@ -132,9 +132,9 @@ function reverseArrayInPlace(array) {
 
 // console.log(reverseArray(["A", "B", "C"]));
 // → ["C", "B", "A"];
-var arrayValue = [1, 2, 3, 4, 5];
-reverseArrayInPlace(arrayValue);
-console.log(arrayValue);
+// var arrayValue = [1, 2, 3, 4, 5];
+// reverseArrayInPlace(arrayValue);
+// console.log(arrayValue);
 // → [5, 4, 3, 2, 1]
 
 
@@ -154,3 +154,13 @@ console.log(arrayValue);
 // console.log(index);
 // console.log(tableFor("pizza", JOURNAL));
 // console.log(phi([76, 9, 4, 1])); 0.069
+
+function arrayToList(array) {
+  var list = {};
+  for (var i = 0; i < array.length; i++) {
+    list.value = array[i];
+    list.rest = {};
+  }
+}
+
+console.log(arrayToList([10, 20]));
