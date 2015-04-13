@@ -156,11 +156,22 @@ function reverseArrayInPlace(array) {
 // console.log(phi([76, 9, 4, 1])); 0.069
 
 function arrayToList(array) {
-  var list = {};
-  for (var i = 0; i < array.length; i++) {
-    list.value = array[i];
-    list.rest = {};
+  for (var i = array.length - 1; i >= 0; i--) {
+    var list = {
+      value: array[i],
+      rest: list
+    };
   }
+  return list;
+}
+
+function listToArray(list) {
+  var array = [];
+  for (var node = list; node; node = node.rest) {
+    array.push(node.value);
+  }
+  return array;
 }
 
 console.log(arrayToList([10, 20]));
+console.log(listToArray(arrayToList([10, 20, 30])));
