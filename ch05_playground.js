@@ -49,17 +49,31 @@ var ancestry = JSON.parse(ANCESTRY_FILE);
 //   return person.died - person.born > 90;
 // }));
 
-function map(array, transform) {
-  var mapped = [];
-  for (var i = 0; i < array.length; i++)
-    mapped.push(transform(array[i]));
-  return mapped;
+// function map(array, transform) {
+//   var mapped = [];
+//   for (var i = 0; i < array.length; i++)
+//     mapped.push(transform(array[i]));
+//   return mapped;
+// }
+//
+// var overNinety = ancestry.filter(function(person) {
+//   return person.died - person.born > 90;
+// });
+//
+// console.log(map(overNinety, function(person) {
+//   return person.name + " was " + person.sex.toUpperCase();
+// }));
+
+function average(array) {
+  function plus(a, b) { return a + b; }
+  return array.reduce(plus) / array.length;
 }
+function age(p) { return p.died - p.born; }
+function male(p) { return p.sex == "m"; }
+function female(p) { return p.sex == "f"; }
 
-var overNinety = ancestry.filter(function(person) {
-  return person.died - person.born > 90;
-});
-
-console.log(map(overNinety, function(person) {
-  return person.name + " was " + person.sex.toUpperCase();
-}));
+console.log(ancestry.filter(male).map(age));
+// console.log(average(ancestry.filter(male).map(age)));
+// → 61.67
+// console.log(average(ancestry.filter(female).map(age)));
+// // → 54.56
